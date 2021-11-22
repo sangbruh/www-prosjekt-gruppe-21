@@ -6,7 +6,7 @@ import {
 	Grid
 } from '@material-ui/core';
 import './TopBar.css';
-import PROG2053Models from '../../../model-data/PhotoApp';
+import fetchModel from '../../../lib/fetchModelData.js';
 
 /**
  * Define TopBar, a React componment of PROG2053 part #2
@@ -15,8 +15,13 @@ class TopBar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			view: this.props.view
+			user: []
 		};
+
+		const promise = fetchModel(`/user/${window.location.pathname.split('/').pop()}`);
+		promise.then((response) => {
+			this.setState({user: response.data});
+		});
 	}
 
 	render() {
@@ -25,10 +30,10 @@ class TopBar extends React.Component {
 				<Toolbar>
 					<Grid container direction="row" justify="space-between" alignItems="center">
 						<Typography variant="h5" color="inherit">
-							Sang
+							Sang, Daniel, Mats and Håvard
 						</Typography>
 						<Typography variant="h5">
-							{this.displayDescription()}
+							{this.displayDescription(window.location.pathname)}
 						</Typography>
 					</Grid>
 				</Toolbar>
@@ -36,28 +41,13 @@ class TopBar extends React.Component {
 		);
 	}
 
-	displayDescription = () => {
-		const descriptions = [];
+	displayDescription = (pathname) => {
+		const fullName = `${this.state.user.first_name} ${this.state.user.last_name}`;
 
-		for (let i = 0; i < PROG2053Models.users.length; i++) {
-			descriptions.push({
-				path: `/photo-share/users/${PROG2053Models.users[i]._id}`,
-				type: 'Details',
-				name: `${PROG2053Models.users[i].first_name} ${PROG2053Models.users[i].last_name}`
-			});
-
-			descriptions.push({
-				path: `/photo-share/photos/${PROG2053Models.users[i]._id}`,
-				type: 'Photos',
-				name: `${PROG2053Models.users[i].first_name} ${PROG2053Models.users[i].last_name}`
-			});
+		if (pathname.search('users') !== -1) {
+			return `Details of ${fullName}`;
 		}
-
-		for (let i = 0; i < descriptions.length; i++) {
-			if (window.location.pathname === descriptions[i].path) {
-				return `${descriptions[i].type} of ${descriptions[i].name}`;
-			}
-		}
+		return `Photos of ${fullName}`;
 	};
 }
 

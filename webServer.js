@@ -11,6 +11,13 @@
 
 /* jshint node: true */
 
+const cors = require('cors');
+const corsOptions = {
+	origin: 'http://localhost:3000',
+	credentials: true, //access-control-allow-credentials:true
+	optionSuccessStatus: 200
+};
+
 const express = require('express');
 
 const portno = 3001; // Port number to use
@@ -22,6 +29,8 @@ const PROG2053models = require('./src/model-data/PhotoApp.js');
 // We have the express static module (http://expressjs.com/en/starter/static-files.html) do all
 // the work for us.
 app.use(express.static(__dirname));
+
+app.use(cors(corsOptions));
 
 app.get('/', function (request, response) {
 	response.send(`Simple web server of files from ${__dirname}`);

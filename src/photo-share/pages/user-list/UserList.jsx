@@ -7,7 +7,7 @@ import {
 }
 from '@material-ui/core';
 import './UserList.css';
-import PROG2053Models from '../../../model-data/PhotoApp.js';
+import fetchModel from '../../../lib/fetchModelData.js';
 
 /**
  * Define UserList, a React componment of PROG2053 part #2
@@ -16,10 +16,13 @@ class UserList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			users: PROG2053Models.userListModel()
+			users: []
 		};
+		const promise = fetchModel('/user/list');
+		promise.then((response) => {
+			this.setState({users: response.data});
+		});
 	}
-
 
 	render() {
 		return this.state.users ? (

@@ -7,6 +7,7 @@ import {
 import './UserPhotos.css';
 import PROG2053Models from '../../../model-data/PhotoApp';
 import {withRouter} from 'react-router';
+import fetchModel from '../../../lib/fetchModelData.js';
 
 
 /**
@@ -16,9 +17,13 @@ class UserPhotos extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			photos: PROG2053Models.photoOfUserModel(props.match.params.userId)
+			photos: []
 		};
 		this.user = PROG2053Models.userModel(props.match.params.userId);
+		const promise = fetchModel(`/photosOfUser/${this.user._id}`);
+		promise.then((response) => {
+			this.setState({photos: response.data});
+		});
 	}
 
 	render() {
@@ -28,7 +33,7 @@ class UserPhotos extends React.Component {
 					<Grid item xs={12} key={photo._id}>
 						<Divider />
 						<Typography>
-							Photo created by {this.user.first_name} {this.user.last_name} ({photo.date_time})
+							Photo created {photo.date_time}
 						</Typography>
 						<img src={`/images/${photo.file_name}`}></img>
 						<Typography variant="body2" color="textSecondary">

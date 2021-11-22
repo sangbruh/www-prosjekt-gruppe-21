@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import {withRouter} from 'react-router-dom';
 import './UserDetail.css';
-import PROG2053Models from '../../../model-data/PhotoApp.js';
+import fetchModel from '../../../lib/fetchModelData.js';
 
 
 /**
@@ -16,8 +16,12 @@ class UserDetail extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			user: PROG2053Models.userModel(this.props.match.params.userId)
+			user: []
 		};
+		const promise = fetchModel(`/user/${this.props.match.params.userId}`);
+		promise.then((response) => {
+			this.setState({user: response.data});
+		});
 	}
 
 	render() {
