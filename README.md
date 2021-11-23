@@ -10,7 +10,7 @@ Mendel Rosenblum.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-## INSTALLATION
+## INSTALLATION - NODE MODULES and etc.(IMPORTANT!)
 - Download Eslint addon VSCODE
 - (npm i)
 - (npm i cors)
