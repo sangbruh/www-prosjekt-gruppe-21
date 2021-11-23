@@ -28,7 +28,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 5. Open another terminal, use one for starting the server, and the other for initializing the site.
 6. enjoy the fantastic visuals of our site...
 
-extra - IF ANY ERRPRS OCCUR SEE
+extra - **IF ANY ERRORS OCCUR SEE**:
     - https://ntnu-prog2053-2021.notion.site/General-Troubleshooting-041a629f877442e4bdd57351554c0960
 
 ## Available Scripts
