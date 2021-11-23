@@ -11,6 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 ## INSTALLATION
+- Download Eslint addon VSCODE
 - (npm i)
 - (npm i cors)
 - (npm i express nodemon)
