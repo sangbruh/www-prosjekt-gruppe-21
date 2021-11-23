@@ -16,6 +16,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - (npm i cors)
 - (npm i express nodemon)
 
+## START- COMMANDS(do them in individual terminals)
+- npm start
+- npm run start-express
+
 ## Available Scripts
 
 In the project directory, you can run:
