@@ -28,7 +28,7 @@ class UserPhotos extends React.Component {
 
 	render() {
 		return this.state.photos ? (
-			<Grid container justify="space-evenly" alignItems="flex-start">
+			<Grid container justifyContent="space-evenly" alignItems="flex-start">
 				{this.state.photos ? this.state.photos.map((photo) => (
 					<Grid item xs={12} key={photo._id}>
 						<Divider />

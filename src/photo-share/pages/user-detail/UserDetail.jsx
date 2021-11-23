@@ -26,7 +26,7 @@ class UserDetail extends React.Component {
 
 	render() {
 		return this.state.user ? (
-			<Grid container justify="space-evenly" alignItems="center">
+			<Grid container justifyContent="space-evenly" alignItems="center">
 				<Grid xs={6} item>
 					<Typography variant="h3">
 						{`${this.state.user.first_name} ${this.state.user.last_name}`}

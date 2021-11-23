@@ -18,7 +18,7 @@ class App extends React.Component {
 								that can be clicked on to test in your browser:
 							</p>
 							<ul>
-								<li>Photo Sharing App - <Link to="photo-share">photo-share</Link></li>
+								<li>Photo Sharing App - <a href="http://localhost:3000/photo-share/users/57231f1a30e4351f4e9f4bd7">photo-share</a></li>
 							</ul>
 						</div>
 					</Route>

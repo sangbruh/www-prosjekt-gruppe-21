@@ -28,7 +28,7 @@ class TopBar extends React.Component {
 		return (
 			<AppBar className="prog2053-topbar-appBar" position="absolute">
 				<Toolbar>
-					<Grid container direction="row" justify="space-between" alignItems="center">
+					<Grid container direction="row" justifyContent="space-between" alignItems="center">
 						<Typography variant="h5" color="inherit">
 							Sang, Daniel, Mats and Håvard
 						</Typography>
